@@ -6,24 +6,21 @@ class m160803_093041_create_task extends Migration
 {
     public function up()
     {
-
+        $this->createTable('tasks',[
+            'id'=>$this->primaryKey(),
+            'text'=>$this->string(255),
+            'priority'=>$this->smallInteger()->notNull()->unique(),
+            'done'=>$this->boolean(),
+            'created_at'=>$this->integer()->notNull(),
+            'updated_at'=>$this->integer()->notNull()
+        ]);
     }
 
     public function down()
     {
-        echo "m160803_093041_create_task cannot be reverted.\n";
 
-        return false;
+        $this->dropTable('tasks');
+
     }
 
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }
