@@ -7,23 +7,23 @@ class m160803_092944_create_user extends Migration
     public function up()
     {
 
+        $this->createTable('users',[
+           'id'=>$this->primaryKey(),
+            'login'=>$this->string(40)->unique()->notNull(),
+            'password'=>$this->string(32)->notNull(),
+            'email'=>$this->string(45)->unique()->notNull(),
+            'auth_key'=>$this->string(32)->notNull(),
+            'created_at'=>$this->integer()->notNull(),
+            'updated_at'=>$this->integer()->notNull()
+        ]);
+
     }
 
     public function down()
     {
-        echo "m160803_092944_create_user cannot be reverted.\n";
 
-        return false;
+        $this->dropTable('users');
+
     }
 
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }
