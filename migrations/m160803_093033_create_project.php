@@ -9,6 +9,7 @@ class m160803_093033_create_project extends Migration
         $this->createTable('projects',[
             'id'=>$this->primaryKey(),
             'name'=>$this->string(40)->unique()->notNull(),
+            'user_id'=>$this->integer()
         ]);
     }
 

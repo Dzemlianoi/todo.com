@@ -12,8 +12,10 @@ class m160803_093041_create_task extends Migration
             'priority'=>$this->smallInteger()->notNull()->unique(),
             'done'=>$this->boolean(),
             'created_at'=>$this->integer()->notNull(),
-            'updated_at'=>$this->integer()->notNull()
+            'updated_at'=>$this->integer()->notNull(),
+            'project_id'=>$this->integer(),
         ]);
+
     }
 
     public function down()
