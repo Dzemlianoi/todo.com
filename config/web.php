@@ -6,8 +6,8 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'layout' => 'sign',
-    'defaultRoute' =>'sign/index',
+    'layout' => 'auth',
+    'defaultRoute' =>'auth/index',
     'language' => 'ru_RU',
     'charset' => 'UTF-8',
     'components' => [
@@ -43,34 +43,34 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
 
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'rules' =>[
-                [
-                    'pattern' => '<controller>/<action>',
-                    'route' => '<controller>/<action>',
-                    'suffix' => '.html',
-                ],
-                [
-                    'pattern' => '<module>/<controller>/<action>',
-                    'route' => '<module>/<controller>/<action>',
-                    'suffix' => '.html',
-                ],
-                [
-                    'pattern' => '',
-                    'route' => 'sign/index',
-                    'suffix' => '',
-                ],
-                [
-                    'pattern' => '<controller>/<action>/<id:\d+>',
-                    'route' => '<controller>/<action>',
-                    'suffix' => '.html',
-                ],
-
-            ],
-        ],
+//        'urlManager' => [
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'enableStrictParsing' => true,
+//            'rules' =>[
+//                [
+//                    'pattern' => '<controller>/<action>',
+//                    'route' => '<controller>/<action>',
+//                    'suffix' => '.html',
+//                ],
+//                [
+//                    'pattern' => '<module>/<controller>/<action>',
+//                    'route' => '<module>/<controller>/<action>',
+//                    'suffix' => '.html',
+//                ],
+//                [
+//                    'pattern' => '',
+//                    'route' => 'sign/index',
+//                    'suffix' => '',
+//                ],
+//                [
+//                    'pattern' => '<controller>/<action>/<id:\d+>',
+//                    'route' => '<controller>/<action>',
+//                    'suffix' => '.html',
+//                ],
+//
+//            ],
+//        ],
     ],
     'params' => $params,
 ];
