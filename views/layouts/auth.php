@@ -30,23 +30,27 @@ $this->beginPage();
     echo Nav::widget([
         'items' => [
             [
-                'label' => 'Home',
-                'url' => ['/auth/index']
+                'label' => 'Register <span class="glyphicon glyphicon-lock"></span>',
+                'url' => ['/auth/registration']
             ],
             [
-                'label' => 'About',
-                'url' => ['/auth/about']
-            ],
-            [
-                'label' => 'Sign in',
+                'label' => 'Sign in <span class="glyphicon glyphicon-log-in"></span>',
                 'url' => ['/auth/signin']
             ],
             [
-                'label' => 'Register',
-                'url' => ['/auth/register']
+                'label' => 'About <span class="glyphicon glyphicon-question-sign"></span>',
+                'url' => ['/auth/about']
             ],
+            [
+                'label' => 'Home <span class="glyphicon glyphicon-home"></span>',
+                'url' => ['/auth/index']
+            ]
+
         ],
-        'options' => ['class' => 'navbar-nav'],
+        'encodeLabels'=>false,
+        'options' => [
+            'class' => 'navbar-nav navbar-right',
+        ],
     ]);
 
 
