@@ -4,11 +4,6 @@ body,.wrapper{
     padding:0;
     width:100%;
 }
-a, a:hover,a:active{
-    text-decoration: none;
-    color:white;
-}
-
 .inline{
     display:inline-block;
 }
@@ -22,12 +17,6 @@ div.status-red{
     display: none;
 }
 /*Wrappers*/
-.main-wrapper{
-    width:100%;
-    min-height:667px;
-    height:667px;
-    background-image: url('../images/soon1.jpg');
-}
 .admin-wrapper{
     width:100%;
     min-height:667px;
@@ -54,197 +43,23 @@ div.status-red{
 }
 
 /*Navbar for admin/auth*/
-.navbar-span, .navbar-item i, .admin-logo:hover{
-    cursor: pointer;
+.admin-wrapper .custom-navbar{
+    background-color: #428bca;
+    border-radius:0px;
 }
-.navbar-admin{
-    height:50px;
-    margin-bottom:1px;
-}
-.nav-row{
-    padding-left:20px;
-    margin:0;
-}
-.navbar-item{
-    height:50px;
-    padding:15px;
-}
-.navbar-item:hover{
-    background-color:ivory;
-    color:orange;
-    cursor:pointer;
-}
-.admin-logo{
-    margin:0 20px 0 0;
+.admin-wrapper .custom-navbar a,.admin-wrapper .navbar-nav ul>li a{
     color:white;
+    opacity:0.8;
+}
+.admin-wrapper .navbar-nav>li,.admin-wrapper .navbar-nav>li a:hover,.admin-wrapper .navbar-nav>li a:active{
+    background-color: #428bca;
+}
+.navbar-nav>li a:hover{
+    opacity: 1;
 }
 
 /*Auth*/
 .form-box{
     margin:200px auto 0;
     width:30%;
-}
-
-/*Admin*/
-.wrapper-admin-panel{
-    min-height:616px;
-}
-.admin-form-group{
-    margin-bottom: 20px;
-}
-
-.admin-submit{
-    margin:0 auto;
-    display:block;
-    width:100px;
-}
-.left-pannel{
-    height:615px;
-    width:105px;
-    opacity: 0.9;
-    background-color:ivory;
-    float:left;
-}
-.admin-button{
-    width:100%;
-    height:85px;
-    text-align: center;
-    padding-top:20px;
-    font-family:Raavi;
-    font-size:16px;
-    color:dimgrey;
-}
-.admin-button:hover{
-    color:darkorange;
-}
-.admin-button-icon{
-    font-size:2em;
-}
-.admin-button-icon:hover{
-    cursor:pointer;
-}
-.form-add-admin{
-    margin:200px auto 0;
-    width:25%;
-}
-.form-add-admin-low{
-    margin:25px auto 0;
-}
-.form-add-admin-middle{
-    margin:112px auto 0;
-}
-.message-admin{
-    min-width:30%;
-    max-width:45%;
-    min-height:120px;
-    margin:100px auto 0px;
-    opacity:0.9;
-    border-top-right-radius:15px;
-    text-align: center;
-    line-height:60px;
-    font-family: Raavi;
-    font-size:30px;
-    vertical-align: middle;
-    background-color:ivory;
-    border:4px solid;
-
-}
-
-.admin-become-active{
-    color:orange;
-}
-.big-ico{
-    font-size:3em;
-}
-/*Добавить форму*/
-.show-form-div{
-    width:30%;
-    margin:30px auto 10px;
-}
-.show-form-div table{
-    border-top: none;
-    width:100%;
-}
-.show-form-div thead tr{
-    background-color: #286090;
-    color:#fff;
-    border-color:#204d74;
-    border-top: none;
-}
-.show-form-div thead tr:first-child th:first-child {
-    border-top-left-radius: 10px;
-}
-.show-form-div thead tr:first-child th:last-child {
-    border-top-right-radius: 10px;
-}
-.show-form-div tbody tr{
-    background-color: ivory;
-    border-bottom:1px solid lightgrey;
-}
-.show-form-div td,.show-form-div th {
-    padding: 5px 10px;
-}
-.form-add{
-    text-align: center;
-}
-.form-add button{
-    width:150px;
-    height:40px;
-    font-size:15px;
-}
-.button-forms-add-nav{
-    margin-right:30px;
-}
-th:nth-child(1), td:nth-child(1) {
-    width: 50px;
-}
-th:nth-child(2), td:nth-child(2) {
-    width: 150px;
-}
-th:nth-child(3), td:nth-child(3) {
-    width: 100px;
-}
-th:nth-child(3), td:nth-child(3) {
-    width: 75px;
-}
-tr {
-    display: table;
-    width: 375px;
-    table-layout: fixed;
-}
-tbody {
-    display: block;
-    height: 154px;
-    width: 375px;
-    overflow: hidden;
-    overflow-y: auto;
-}
-.form-input-number{
-    width:60px;
-}
-.message-admin-lowmargin{
-    margin:20px auto 0px;
-    min-height:65px;
-}
-.form-delete{
-    width:30%;
-    margin:35px auto 0;
-}
-.form-delete button,.form-delete select{
-    display:inline-block;
-}
-.form-delete select{
-    width:65%;
-}
-.form-change{
-    width:50%;
-    margin:100px auto 0px;
-}
-.form-change select,.form-change button{
-    display:inline-block;
-    width:25%;
-}
-.form-change label{
-    display:block;
-    font-size:16px;
 }
