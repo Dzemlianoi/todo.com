@@ -63,3 +63,15 @@ div.status-red{
     margin:200px auto 0;
     width:30%;
 }
+.auth-registration, .auth-signin{
+    padding-top:150px;
+}
+.auth-registration form, .auth-signin form{
+    width:30%;
+    margin:0 auto;
+}
+.auth-registration form button,.auth-signin form button {
+    width:50%;
+    margin:0 auto;
+    display:block;
+}
