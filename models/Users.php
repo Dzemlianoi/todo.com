@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "users".
@@ -17,8 +19,9 @@ use Yii;
  *
  * @property Projects[] $projects
  */
-class Users extends \yii\db\ActiveRecord
+class Users extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    public $password;
     /**
      * @inheritdoc
      */
@@ -57,6 +60,58 @@ class Users extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function behaviors(){
+        return[
+
+            TimestampBehavior::className()
+
+        ];
+    }
+
+    public function setPassword($password){
+        $this->password=Yii::$app->security->generatePasswordHash($password);
+    }
+    public function validatePassword($password){
+        return Yii::$app->security->validatePassword($password,$this->password);
+    }
+
+    public function generateAuthKey(){
+        $this->auth_key=Yii::$app->security->generateRandomString();
+    }
+
+//    User identification
+
+    public static function findIdentity($id)
+    {
+        return static::findOne(['id'=>$id]);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
+    public static function findIdentityByLogin($login){
+
+        return static::findOne(['login'=>$login]);
+
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return $this->auth_key === $authKey;
     }
 
     /**
