@@ -22,7 +22,13 @@ class RegForm extends Model{
         ];
     }
     public function reg(){
-        return true;
+        $user = new Users();
+        $user->login=$this->login;
+        $user->email=$this->email;
+        $user->generateAuthKey();
+        $user->setPassword($this->password);
+
+        return $user->save()?$user:NULL;
     }
 
 
