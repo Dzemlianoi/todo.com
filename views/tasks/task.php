@@ -1,4 +1,4 @@
-<div class="task-row" id="task<?=$model['id']?>">
+<div class="task-row" id="task<?=$model['id']?>" data="<?=$model['priority']?>">
     <div class="done-task">
         <input type="checkbox"/>
     </div>
