@@ -14,7 +14,9 @@ class TasksController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $id=Yii::$app->user->getId();
+        $projects=Projects::find()->where(['user_id'=>$id])->orderBy('id')->all();
+        return $this->render('index',['data'=>$projects]);
     }
 
     public function actionCreate(){
