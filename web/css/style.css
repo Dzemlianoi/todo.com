@@ -110,7 +110,8 @@ div.status-red{
 }
 .head-buttons-div{
     text-align: right;
-    width:70%;
+    width:75px;
+    float:right;
     display:inline-block;
 }
 .head-buttons-div .glyph-for-head-projects{
@@ -123,6 +124,9 @@ div.status-red{
 .project-name{
     font-family: Arial;
     font-size:17px;
+    border:none;
+    background-color: #337ab7;
+    display:inline-block;
 }
 .head-add-bar{
     background-color: #eee;
