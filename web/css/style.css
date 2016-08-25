@@ -4,6 +4,9 @@ body,.wrapper{
     padding:0;
     width:100%;
 }
+div.none-display{
+    display:none;
+}
 .inline{
     display:inline-block;
 }
@@ -202,6 +205,14 @@ div.status-red{
     border-right:1px solid lightcoral;
     margin-right:15px;
 }
+.task-text-completed{
+    text-decoration: line-through;
+}
+.task-completed{
+    background-color: lightgrey;
+    font-style: italic;
+    opacity:0.6;
+}
 .done-task input[type="checkbox"]{
     width:16px;
     height:16px;
@@ -214,10 +225,12 @@ div.status-red{
     border-left:1px solid lightcoral;
     border-right:1px solid lightgrey;
 }
+
 .input-name-task{
     border:none;
     height:45px;
     background-color: inherit;
+    width:100%;
 }
 .input-name-task:focus{
     border:none;

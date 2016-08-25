@@ -87,4 +87,12 @@ class TasksController extends \yii\web\Controller
         $task->text=$name;
         return $task->save();
     }
+
+    public function actionUpdatestatus(){
+        $id=$_GET['id'];
+        $checked=$_GET['checked'];
+        $task=Tasks::findOne($id);
+        $task->done=$checked=='true'?1:0;
+        return $task->save();
+    }
 }

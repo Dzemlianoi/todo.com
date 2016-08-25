@@ -8,6 +8,7 @@ function reinit(){
     $('.task-updating .glyphicon-trash').off('click');
     $('.task-updating .glyphicon-pencil').off('click');
     $('.input-name-task').off('blur');
+    $('.task-row').off('hover');
 
     $(document).ready(function () {
         $('.button-add-project').on('click',function () {
@@ -74,7 +75,7 @@ function reinit(){
                 reinit();
             }
         })
-    })
+    });
 
     $('.task-updating .glyphicon-trash').on('click',function(){
         var row=$(this).parents('.task-row');
@@ -114,8 +115,35 @@ function reinit(){
             })
         }
     });
-
-
+    $('.done-task input').on('click',function () {
+        var parent=$(this).parents('.task-row');
+        var Input=parent.find('.input-name-task');
+        var checked=$(this).prop('checked');
+        var not_normal_id=$(this).parents('.task-row').attr('id');
+        var normal_id=not_normal_id.substring(4);
+        $.ajax({
+            url: "/web/index.php?r=tasks%2Fupdatestatus",
+            data: 'checked='+checked+'&id=' + normal_id,
+            success:function(data){
+                if (checked) {
+                    Input.addClass('task-text-completed');
+                    parent.addClass('task-completed');
+                }else{
+                    Input.removeClass('task-text-completed');
+                    parent.removeClass('task-completed');
+                }
+            }
+        })
+    });
+    $('.task-row').hover(
+        function() {
+            var task=$(this).find('.task-updating')
+            task.removeClass('none-display');
+        },function() {
+            var task=$(this).find('.task-updating')
+            task.addClass('none-display');
+        }
+    );
 }
 
 reinit();
