@@ -26,27 +26,38 @@ $this->beginPage();
             'options' => ['class'=>'custom-navbar']
         ]
     );
+    $menuItems[]=
+        [
+            'label' => 'About <span class="glyphicon glyphicon-question-sign"></span>',
+            'url' => ['/auth/about']
+        ];
+    $menuItems[]= [
+            'label' => 'Home <span class="glyphicon glyphicon-home"></span>',
+            'url' => ['/tasks/delete']
+        ];
 
+    if (Yii::$app->user->isGuest){
+        $menuItems[]=[
+            'label' => 'Register <span class="glyphicon glyphicon-lock"></span>',
+            'url' => ['/auth/registration']
+        ];
+        $menuItems[]=[
+            'label' => 'Sign in <span class="glyphicon glyphicon-log-in"></span>',
+            'url' => ['/auth/signin']
+        ];
+    }else{
+        $menuItems[]=[
+            'label' => 'Tasks <span class="glyphicon glyphicon-list-alt"></span>',
+            'url' => ['/tasks/index']
+        ];
+        $menuItems[]=[
+            'label' => 'Logout'.'('.Yii::$app->user->identity['login'].') <span class="glyphicon glyphicon-log-out"></span>',
+            'url' => ['/auth/logout']
+        ];
+
+    }
     echo Nav::widget([
-        'items' => [
-            [
-                'label' => 'Register <span class="glyphicon glyphicon-lock"></span>',
-                'url' => ['/auth/registration']
-            ],
-            [
-                'label' => 'Sign in <span class="glyphicon glyphicon-log-in"></span>',
-                'url' => ['/auth/signin']
-            ],
-            [
-                'label' => 'About <span class="glyphicon glyphicon-question-sign"></span>',
-                'url' => ['/auth/about']
-            ],
-            [
-                'label' => 'Home <span class="glyphicon glyphicon-home"></span>',
-                'url' => ['/auth/index']
-            ]
-
-        ],
+        'items' => $menuItems,
         'encodeLabels'=>false,
         'options' => [
             'class' => 'navbar-nav navbar-right',
@@ -56,7 +67,7 @@ $this->beginPage();
 
     NavBar::end() ?>
 <!--    Insert content-->
-    <div class="container">
+    <div class="container main-content">
         <?=$content ?>
     </div>
 

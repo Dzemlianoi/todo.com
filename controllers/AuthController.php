@@ -11,7 +11,7 @@ class AuthController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-
+        return $this->render('index');
     }
 
     public function actionSignin(){
@@ -43,6 +43,11 @@ class AuthController extends \yii\web\Controller
             'registration',
             ['model'=>$model]
             );
+    }
+
+    public function actionLogout(){
+        Yii::$app->user->logout();
+        $this->goHome();
     }
 
 }
