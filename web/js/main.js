@@ -4,6 +4,7 @@ function reinit(){
     $('.glyphicon-trash').off('click');
     $('.glyphicon-pencil').off('click');
     $('.project-name').off('blur');
+    $('.task-add-btn').off('click');
 
     $(document).ready(function () {
         $('.button-add-project').on('click',function () {
@@ -56,8 +57,14 @@ function reinit(){
         var parent=$(this).parents('.project');
         var Input=parent.find('.head-add-bar input')
         var value=Input.val();
-
-
+        var id=parent.attr('id');
+        $.ajax({
+            url: "/web/index.php?r=tasks%2Fcreatetask",
+            data: 'id=' + id + '&text=' + value,
+            success: function (data) {
+                alert(data);
+            }
+        })
     })
 }
 
