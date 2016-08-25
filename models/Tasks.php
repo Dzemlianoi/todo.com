@@ -11,8 +11,6 @@ use Yii;
  * @property string $text
  * @property integer $priority
  * @property integer $done
- * @property integer $created_at
- * @property integer $updated_at
  * @property integer $project_id
  *
  * @property Projects $project
@@ -33,8 +31,8 @@ class Tasks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text', 'priority', 'created_at', 'updated_at'], 'required'],
-            [['priority', 'done', 'created_at', 'updated_at', 'project_id'], 'integer'],
+            [['text', 'priority'], 'required'],
+            [['priority', 'done', 'project_id'], 'integer'],
             [['text'], 'string', 'max' => 40],
             [['project_id'], 'exist', 'skipOnError' => true, 'targetClass' => Projects::className(), 'targetAttribute' => ['project_id' => 'id']],
         ];
@@ -50,8 +48,6 @@ class Tasks extends \yii\db\ActiveRecord
             'text' => 'Text',
             'priority' => 'Priority',
             'done' => 'Done',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
             'project_id' => 'Project ID',
         ];
     }
