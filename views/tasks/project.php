@@ -13,8 +13,13 @@
         <button class="task-add-btn btn btn-success">Add a task</button>
     </div>
     <div class="tasks-of-project empty-project">
-        <?foreach ($project['tasks'] as $task){
-          echo $this->render('task',['task'=>$task]);
+        <?
+        if (isset($project['tasks'])){
+            foreach ($project['tasks'] as $task){
+                if (isset($task)) {
+                    echo $this->render('task', ['task' => $task]);
+                }
+            }
         }
         ?>
     </div>

@@ -5,6 +5,7 @@ function reinit(){
     $('.head-buttons-div .glyphicon-pencil').off('click');
     $('.project-name').off('blur');
     $('.task-add-btn').off('click');
+    $('.task-updating .glyphicon-trash').off('click');
 
     $(document).ready(function () {
         $('.button-add-project').on('click',function () {
@@ -70,6 +71,24 @@ function reinit(){
             }
         })
     })
+
+    $('.task-updating .glyphicon-trash').on('click',function(){
+        var row=$(this).parents('.task-row');
+        var not_normal_id=$(this).parents('.task-row').attr('id');
+        var normal_id=not_normal_id.substring(4);
+        var data='id='+normal_id;
+        $.ajax({
+            url: "/web/index.php?r=tasks%2Fdeletetask",
+            type:"GET",
+            data:data,
+            success: function(data){
+
+                data=='deleted'?row.remove():false;
+            }
+        });
+    })
+
+
 }
 
 reinit();

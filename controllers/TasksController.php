@@ -46,7 +46,7 @@ class TasksController extends \yii\web\Controller
     public function actionDeleteproject(){
         $id = $_GET['id'];
         $project = Projects::findOne($id);
-        return $project->delete();
+        echo $project->delete()?'deleted':NULL;
     }
 
     public function actionUpdateproject(){
@@ -77,6 +77,6 @@ class TasksController extends \yii\web\Controller
     public function actionDeletetask(){
         $task_id = $_GET['id'];
         $task = Tasks::findOne($task_id);
-        return $task->delete();
+        echo $task->delete()?'deleted':NULL;
     }
 }
