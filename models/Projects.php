@@ -31,9 +31,9 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['name'],'default', 'value' => 1],
             [['user_id'], 'integer'],
             [['name'], 'string', 'max' => 40],
-            [['name'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }

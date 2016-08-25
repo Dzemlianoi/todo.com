@@ -10,6 +10,8 @@ use Yii;
 
 class TasksController extends \yii\web\Controller
 {
+    const DEFAULT_PROJECT_NAME='Task List';
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -20,15 +22,14 @@ class TasksController extends \yii\web\Controller
         $model=new Projects();
 
         $model->user_id=Yii::$app->user->getId();
-        $last_task=$model::find()->orderBy(['id' => SORT_DESC])->one();
-        $new_user_id=$last_task['id']+1;
-        $model->name='Task list №'.$new_user_id;
+        $model->name=self::DEFAULT_PROJECT_NAME;
 
         if ($model->save()){
-            $data['id']=$model->user_id;
-            $data['name']=$model->name;
 
-            echo ($this->renderAjax('project',['data'=>$data,'model'=>$model]));
+            echo ($this->renderAjax('project',['model'=>$model]));
+        }else{
+
+            echo $model->user_id;
         }
     }
 
