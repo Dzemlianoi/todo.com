@@ -8,11 +8,9 @@ class m160803_093041_create_task extends Migration
     {
         $this->createTable('tasks',[
             'id'=>$this->primaryKey(),
-            'text'=>$this->string(40)->notNull(),
+            'text'=>$this->string(40),
             'priority'=>$this->smallInteger()->notNull(),
             'done'=>$this->boolean(),
-            'created_at'=>$this->integer()->notNull(),
-            'updated_at'=>$this->integer()->notNull(),
             'project_id'=>$this->integer()
         ]);
 
