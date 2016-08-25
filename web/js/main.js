@@ -1,8 +1,8 @@
 
 function reinit(){
     $('.button-add-project').off('click');
-    $('.glyphicon-trash').off('click');
-    $('.glyphicon-pencil').off('click');
+    $('.head-buttons-div .glyphicon-trash').off('click');
+    $('.head-buttons-div .glyphicon-pencil').off('click');
     $('.project-name').off('blur');
     $('.task-add-btn').off('click');
 
@@ -17,7 +17,7 @@ function reinit(){
             })
         });
     });
-    $('.glyphicon-trash').on('click',function(){
+    $('.head-buttons-div .glyphicon-trash').on('click',function(){
         var id=$(this).parents('.project').attr('id');
         var data='id='+id;
         $.ajax({
@@ -30,7 +30,7 @@ function reinit(){
         });
     });
 
-    $('.glyphicon-pencil').on('click',function(){
+    $('.head-buttons-div .glyphicon-pencil').on('click',function(){
         var parent=$(this).parents('.project');
         var Input=parent.find('.project-name');
         Input.prop('disabled',false).focus();
@@ -51,7 +51,7 @@ function reinit(){
                 data: 'id=' + id + '&value=' + currentVal,
             })
         }
-    })
+    });
 
     $('.task-add-btn').on('click',function(){
         var parent=$(this).parents('.project');
@@ -62,7 +62,11 @@ function reinit(){
             url: "/web/index.php?r=tasks%2Fcreatetask",
             data: 'id=' + id + '&text=' + value,
             success: function (data) {
-                alert(data);
+                var project=$('#'+id+' .tasks-of-project');
+                if (project.hasClass('empty-project')){
+                    project.empty().removeClass('empty-project');
+                }
+                project.append(data);
             }
         })
     })

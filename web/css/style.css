@@ -91,7 +91,7 @@ div.status-red{
 .project{
     width:80%;
     min-height:150px;
-    margin:0 auto;
+    margin:0 auto 40px;
 }
 .head-project{
     height:45px;
@@ -173,3 +173,73 @@ div.status-red{
     vertical-align: middle;
 }
 
+/*Tasks*/
+
+.task-row{
+    width:100%;
+    height:45px;
+    color:grey;
+    font-size:16px;
+    line-height:45px;
+    vertical-align: middle;
+    border-bottom:1px solid lightgrey;
+    opacity:0.9;
+}
+.task-row:last-child{
+    border-bottom:none;
+}
+.task-row:hover{
+    background-color: #fcfed5;
+    cursor: pointer;
+}
+.done-task,.text-task,.task-updating,.task-order-change{
+    display:inline-block;
+}
+.done-task{
+    float:left;
+    width:10%;
+    text-align: center;
+    border-right:1px solid lightcoral;
+    margin-right:15px;
+}
+.done-task input[type="checkbox"]{
+    width:16px;
+    height:16px;
+}
+.text-task{
+    padding-left:20px;
+    float:left;
+    width: 60%;
+    border-left:1px solid lightcoral;
+    border-right:1px solid lightgrey;
+}
+.input-name-task{
+    border:none;
+    height:45px;
+    background-color: inherit;
+}
+.task-updating{
+    float:left;
+    width: 27%;
+    height:45px;
+    text-align:center;
+    vertical-align: middle;
+}
+
+.task-order-change{
+    width:36px;
+    line-height: 23px;
+    vertical-align: middle;
+}
+.task-updating .glyphicon:hover{
+    color:orange;
+}
+.task-updating .glyphicon{
+    font-size:18px;
+    margin-right:5px;
+}
+
+.task-updating .glyphicon-pencil, .task-updating .glyphicon-trash{
+    margin-bottom:15px;
+    display: inline-block;
+}
