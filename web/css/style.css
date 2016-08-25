@@ -75,3 +75,97 @@ div.status-red{
     margin:0 auto;
     display:block;
 }
+
+/*Tasks*/
+
+.button-add-project{
+    display:block;
+    width:17%;
+    margin:0 auto 30px;
+}
+.task-lists-div{
+    min-height:200px;
+    width:80%;
+    margin:0 auto 50px;
+}
+.project{
+    width:80%;
+    min-height:150px;
+    margin:0 auto;
+}
+.head-project{
+    height:45px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding:0 15px;
+}
+.glyph-for-head-projects{
+    line-height: 44px;
+    vertical-align: middle;
+    display:inline-block;
+    margin-right:30px;
+    font-size:19px;
+}
+.head-buttons-div{
+    text-align: right;
+    width:70%;
+    display:inline-block;
+}
+.head-buttons-div .glyph-for-head-projects{
+    margin-right:10px;
+}
+.head-buttons-div .glyph-for-head-projects:hover{
+    cursor: pointer;
+    color:darkorange;
+}
+.project-name{
+    font-family: Arial;
+    font-size:17px;
+}
+.head-add-bar{
+    background-color: #eee;
+    height:45px;
+    line-height:45px;
+    vertical-align:middle;
+}
+.head-add-bar .glyph-for-head-projects{
+    color:green;
+    padding:0 25px;
+    line-height:40px;
+    font-size:21px;
+    display: inline-block;
+    margin-right:0px;
+}
+.head-add-bar input{
+    height:30px;
+    vertical-align: middle;
+    display:inline-block;
+    width:75%;
+    border:none;
+    padding:0 15px;
+}
+.head-add-bar button{
+    height:30px;
+    margin-left:0;
+    display:inline-block;
+    padding:0 7px;
+}
+.tasks-of-project{
+    min-height:30px;
+    background-color: white;
+    width:100%;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.empty-project{
+    text-align: center;
+    color:lightgrey;
+    text-shadow: grey;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
