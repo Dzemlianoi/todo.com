@@ -70,6 +70,7 @@ function reinit(){
                     project.empty().removeClass('empty-project');
                 }
                 project.append(data);
+                Input.val('');
                 reinit();
             }
         })
