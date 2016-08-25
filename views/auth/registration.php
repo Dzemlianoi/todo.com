@@ -14,7 +14,8 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'login') ?>
         <?= $form->field($model, 'email') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
-    
+        <?= $form->field($model, 'confirmPassword')->passwordInput() ?>
+
         <div class="form-group">
             <?= Html::submitButton('Register', ['class' => 'form-btn btn btn-primary']) ?>
         </div>
