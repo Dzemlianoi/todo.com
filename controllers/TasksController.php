@@ -16,7 +16,19 @@ class TasksController extends \yii\web\Controller
     {
         $id=Yii::$app->user->getId();
         $projects=Projects::find()->where(['user_id'=>$id])->orderBy('id')->all();
-        return $this->render('index',['data'=>$projects]);
+        $result=[];
+        foreach($projects as $project){
+            $result[$project['id']]['name']=$project['name'];
+            $result[$project['id']]['tasks']=$this->getTasksOfProject($project['id']);
+            $result[$project['id']]['id']=$project['id'];
+        }
+
+        return $this->render('index',['data'=>$result]);
+
+    }
+
+    public function getTasksOfProject($project_id){
+       return $tasks=Tasks::find()->where(['project_id'=>$project_id])->orderBy('priority')->all();
     }
 
     public function actionCreateproject(){

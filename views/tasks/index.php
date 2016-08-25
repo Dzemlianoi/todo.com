@@ -3,7 +3,7 @@
 ?>
 <div class="task-lists-div">
     <?foreach ($data as $project){
-        echo $this->render('project',['model'=>$project]);
+        echo $this->render('project',['project'=>$project]);
     };
     ?>
 </div>

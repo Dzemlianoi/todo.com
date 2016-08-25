@@ -1,9 +1,9 @@
-<div class="task-row" id="task<?=$model['id']?>" data="<?=$model['priority']?>">
+<div class="task-row" id="task<?=$task['id']?>" data="<?=$task['priority']?>">
     <div class="done-task">
         <input type="checkbox"/>
     </div>
     <div class="text-task">
-        <input type="text" class="input-name-task" disabled value="<?=$model['text']?>"/>
+        <input type="text" class="input-name-task" disabled value="<?=$task['text']?>"/>
     </div>
     <div class="task-updating">
         <div class="task-order-change">
