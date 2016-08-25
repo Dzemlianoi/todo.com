@@ -39,7 +39,7 @@ class TasksController extends \yii\web\Controller
         $model->name=self::DEFAULT_PROJECT_NAME;
 
         if ($model->save()){
-            echo ($this->renderAjax('project',['model'=>$model]));
+            echo ($this->renderAjax('project',['project'=>$model]));
         }
     }
 
@@ -70,7 +70,7 @@ class TasksController extends \yii\web\Controller
         $task->project_id=$project_id;
 
         if ($task->save()) {
-            echo ($this->renderAjax('task',['model'=>$task]));
+            echo ($this->renderAjax('task',['task'=>$task]));
         }
     }
 

@@ -64,10 +64,11 @@ function reinit(){
             data: 'id=' + id + '&text=' + value,
             success: function (data) {
                 var project=$('#'+id+' .tasks-of-project');
-                if (project.hasClass('empty-project')){
+                if (!project.find('.tasks-row')){
                     project.empty().removeClass('empty-project');
                 }
                 project.append(data);
+                reinit();
             }
         })
     })
@@ -77,12 +78,12 @@ function reinit(){
         var not_normal_id=$(this).parents('.task-row').attr('id');
         var normal_id=not_normal_id.substring(4);
         var data='id='+normal_id;
+        console.log(data);
         $.ajax({
             url: "/web/index.php?r=tasks%2Fdeletetask",
             type:"GET",
             data:data,
             success: function(data){
-
                 data=='deleted'?row.remove():false;
             }
         });
