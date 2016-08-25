@@ -19,7 +19,7 @@ class TasksController extends \yii\web\Controller
         return $this->render('index',['data'=>$projects]);
     }
 
-    public function actionCreate(){
+    public function actionCreateproject(){
 
         $model=new Projects();
 
@@ -35,7 +35,7 @@ class TasksController extends \yii\web\Controller
         }
     }
 
-    public function actionDelete(){
+    public function actionDeleteproject(){
         $id=$_GET['id'];
 
         $model=new Projects();
@@ -45,7 +45,7 @@ class TasksController extends \yii\web\Controller
         }
     }
 
-    public function actionUpdate(){
+    public function actionUpdateproject(){
         $id=$_GET['id'];
         $name=$_GET['value'];
         $project=Projects::findOne($id);

@@ -8,7 +8,7 @@ function reinit(){
     $(document).ready(function () {
         $('.button-add-project').on('click',function () {
             $.ajax({
-                url: "/web/index.php?r=tasks%2Fcreate",
+                url: "/web/index.php?r=tasks%2Fcreateproject",
                 success: function(data){
                     $('.task-lists-div').append(data);
                     reinit();
@@ -20,7 +20,7 @@ function reinit(){
         var id=$(this).parents('.project').attr('id');
         var data='id='+id;
         $.ajax({
-            url: "/web/index.php?r=tasks%2Fdelete",
+            url: "/web/index.php?r=tasks%2Fdeleteproject",
             type:"GET",
             data:data,
             success: function(data){
@@ -46,13 +46,18 @@ function reinit(){
         }else {
             var id = $(this).parents('.project').attr('id');
             $.ajax({
-                url: "/web/index.php?r=tasks%2Fupdate",
+                url: "/web/index.php?r=tasks%2Fupdateproject",
                 data: 'id=' + id + '&value=' + currentVal,
-                success: function (data) {
-                    alert(data);
-                }
             })
         }
+    })
+
+    $('.task-add-btn').on('click',function(){
+        var parent=$(this).parents('.project');
+        var Input=parent.find('.head-add-bar input')
+        var value=Input.val();
+
+
     })
 }
 

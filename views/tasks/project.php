@@ -10,7 +10,7 @@
     <div class="head-add-bar">
         <span class="glyph-for-head-projects glyphicon glyphicon-plus"></span>
         <input type="text" placeholder="Put a name of your task">
-        <button class="btn btn-success">Add a task</button>
+        <button class="task-add-btn btn btn-success">Add a task</button>
     </div>
     <div class="tasks-of-project empty-project">
         No current tasks
