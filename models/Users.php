@@ -21,7 +21,6 @@ use yii\web\IdentityInterface;
  */
 class Users extends \yii\db\ActiveRecord implements IdentityInterface
 {
-    public $password;
     /**
      * @inheritdoc
      */
@@ -71,10 +70,11 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     public function setPassword($password){
-        $this->password=Yii::$app->security->generatePasswordHash($password);
+        return $this->password=md5($password);
     }
     public function validatePassword($password){
-        return Yii::$app->security->validatePassword($password,$this->password);
+        $pass=md5($password);
+        return $pass==$this->password;
     }
 
     public function generateAuthKey(){
