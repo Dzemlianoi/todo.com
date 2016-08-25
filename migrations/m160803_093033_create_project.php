@@ -8,7 +8,7 @@ class m160803_093033_create_project extends Migration
     {
         $this->createTable('projects',[
             'id'=>$this->primaryKey(),
-            'name'=>$this->string(40)->unique()->notNull(),
+            'name'=>$this->string(40)->defaultValue('Task List')->notNull(),
             'user_id'=>$this->integer()
         ]);
     }
