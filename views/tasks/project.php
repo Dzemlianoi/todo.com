@@ -1,9 +1,9 @@
 <div class="project" id="<?= $model['id']?>">
     <div class="head-project bg-primary">
         <span class="glyph-for-head-projects glyphicon glyphicon-tasks"></span>
-        <span class="project-name"><?= $model['name'].' №'.$model['id']?></span>
+        <input disabled type="text" value="<?= $model['name']?>" class="project-name"/>
         <div class="head-buttons-div">
-            <span onclick="deleteProject(<?=$model['id']?>)" class="glyph-for-head-projects glyphicon glyphicon-pencil"></span>
+            <span class="glyph-for-head-projects glyphicon glyphicon-pencil"></span>
             <span class="glyph-for-head-projects glyphicon glyphicon-trash"></span>
         </div>
     </div>
