@@ -79,4 +79,12 @@ class TasksController extends \yii\web\Controller
         $task = Tasks::findOne($task_id);
         echo $task->delete()?'deleted':NULL;
     }
+
+    public function actionUpdatetask(){
+        $id=$_GET['id'];
+        $name=$_GET['value'];
+        $task=Tasks::findOne($id);
+        $task->text=$name;
+        return $task->save();
+    }
 }

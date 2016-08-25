@@ -207,6 +207,7 @@ div.status-red{
     height:16px;
 }
 .text-task{
+    text-align:left;
     padding-left:20px;
     float:left;
     width: 60%;
@@ -217,6 +218,10 @@ div.status-red{
     border:none;
     height:45px;
     background-color: inherit;
+}
+.input-name-task:focus{
+    border:none;
+    outline: none;
 }
 .task-updating{
     float:left;

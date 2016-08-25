@@ -6,6 +6,8 @@ function reinit(){
     $('.project-name').off('blur');
     $('.task-add-btn').off('click');
     $('.task-updating .glyphicon-trash').off('click');
+    $('.task-updating .glyphicon-pencil').off('click');
+    $('.input-name-task').off('blur');
 
     $(document).ready(function () {
         $('.button-add-project').on('click',function () {
@@ -87,7 +89,30 @@ function reinit(){
                 data=='deleted'?row.remove():false;
             }
         });
-    })
+    });
+    $('.task-updating .glyphicon-pencil').on('click',function(){
+        var parent=$(this).parents('.task-row');
+        var Input=parent.find('.input-name-task');
+        Input.prop('disabled',false).focus();
+    });
+
+    $('.input-name-task').on('focus',function() {
+        this.old_value=$(this).val();
+    });
+
+    $('.input-name-task').on('blur',function(){
+        var currentVal=($(this).val());;
+        if (currentVal==''){
+            $(this).val(this.old_value);
+        }else {
+            var not_normal_id=$(this).parents('.task-row').attr('id');
+            var normal_id=not_normal_id.substring(4);
+            $.ajax({
+                url: "/web/index.php?r=tasks%2Fupdatetask",
+                data: 'id=' + normal_id + '&value=' + currentVal,
+            })
+        }
+    });
 
 
 }
