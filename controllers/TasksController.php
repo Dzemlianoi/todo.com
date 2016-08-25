@@ -43,8 +43,16 @@ class TasksController extends \yii\web\Controller
         }
     }
 
-    public function updateProject(){
-
+    public function actionUpdate(){
+        $id=$_GET['id'];
+        $name=$_GET['value'];
+        $project=Projects::findOne($id);
+        $project->name=$name;
+        if ($project->save()){
+            echo 'lol';
+        }else{
+            echo'not lol';
+        }
     }
 
 
