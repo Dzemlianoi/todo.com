@@ -41,7 +41,6 @@ class LoginForm extends Model{
             return true;
         }
 
-
     }
 
     public function attributeLabels()
