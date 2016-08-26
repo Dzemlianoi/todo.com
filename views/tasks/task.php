@@ -21,4 +21,4 @@
         <span class="glyphicon glyphicon-trash"></span>
     </div>
 </div>
-<div class="clear-both" id="clearboth<?=$task['id']?>" style="clear:both"></div>
+<div class="clear-both" id="clearboth"></div>

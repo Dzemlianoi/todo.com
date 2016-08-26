@@ -1,4 +1,5 @@
 /*General*/
+
 body,.wrapper{
     margin:0;
     padding:0;
@@ -19,7 +20,12 @@ div.status-red{
 .go-hide{
     display: none;
 }
+.clear-both{
+    clear: both;
+}
+
 /*Wrappers*/
+
 .admin-wrapper{
     width:100%;
     min-height:667px;
@@ -31,20 +37,6 @@ div.status-red{
 .form-add-workspace{
     text-align: center;
 }
-/*Main*/
-.message-soon{
-    background-color:white;
-    opacity: 0.7;
-    width:40%;
-    height:200px;
-    text-align: center;
-    font-family: Raavi;
-    font-size:50px;
-    padding:70px 0;
-    margin:250px auto;
-    border-radius:20px;
-}
-
 /*Navbar for admin/auth*/
 .admin-wrapper .custom-navbar{
     background-color: #428bca;
@@ -187,18 +179,7 @@ div.status-red{
     vertical-align: middle;
     border-bottom:1px solid lightgrey;
     opacity:0.9;
-    zoom: 1;
-    display:block;
-
 }
-.task-row:after{
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-}
-
 .task-row:last-child{
     border-bottom:none;
 }
@@ -236,7 +217,6 @@ div.status-red{
     border-left:1px solid lightcoral;
     border-right:1px solid lightgrey;
 }
-
 .input-name-task{
     border:none;
     height:45px;
@@ -254,7 +234,6 @@ div.status-red{
     text-align:center;
     vertical-align: middle;
 }
-
 .task-order-change{
     width:36px;
     line-height: 23px;
@@ -267,7 +246,6 @@ div.status-red{
     font-size:18px;
     margin-right:5px;
 }
-
 .task-updating .glyphicon-pencil, .task-updating .glyphicon-trash{
     margin-bottom:15px;
     display: inline-block;

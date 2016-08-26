@@ -13,7 +13,8 @@
         <button class="task-add-btn btn btn-success">Add a task</button>
     </div>
     <div class="tasks-of-project empty-project">
-        <?
+
+        <?php
         if (isset($project['tasks'])){
             foreach ($project['tasks'] as $task){
                 if (isset($task)) {
@@ -22,5 +23,6 @@
             }
         }
         ?>
+
     </div>
 </div>
