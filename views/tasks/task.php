@@ -10,7 +10,7 @@
         <input <?=$checked?> type="checkbox"/>
     </div>
     <div class="text-task">
-        <input type="text" maxlength="10" class="<?=$class_input?> input-name-task" disabled value="<?=$task['text']?>"/>
+        <input type="text" maxlength="40" class="<?=$class_input?> input-name-task" disabled value="<?=$task['text']?>"/>
     </div>
     <div class="task-updating none-display">
         <div class="task-order-change">
@@ -21,3 +21,4 @@
         <span class="glyphicon glyphicon-trash"></span>
     </div>
 </div>
+<div class="clear-both" id="clearboth<?=$task['id']?>" style="clear:both"></div>

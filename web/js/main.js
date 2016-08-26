@@ -9,6 +9,8 @@ function reinit(){
     $('.task-updating .glyphicon-pencil').off('click');
     $('.input-name-task').off('blur');
     $('.task-row').off('hover');
+    $('.glyphicon-chevron-up').off('click');
+    $('.glyphicon-chevron-down').off('click');
 
     $(document).ready(function () {
         $('.button-add-project').on('click',function () {
@@ -137,13 +139,33 @@ function reinit(){
     });
     $('.task-row').hover(
         function() {
-            var task=$(this).find('.task-updating')
+            var task=$(this).find('.task-updating');
             task.removeClass('none-display');
         },function() {
-            var task=$(this).find('.task-updating')
+            var task=$(this).find('.task-updating');
             task.addClass('none-display');
         }
     );
+
+    $('.glyphicon-chevron-up').on('click',function(){
+        var this_task=$(this).parents('.task-row');
+        var prev_task=this_task.prev();
+        if (prev_task.length!=0){
+            this_task.insertBefore(prev_task.prev());
+            var clearfix=prev_task;
+            clearfix.insertAfter(this_task)
+        }
+    });
+
+    $('.glyphicon-chevron-down').on('click',function(){
+        var this_task=$(this).parents('.task-row');
+        var next_task=this_task.next();
+        if (next_task.next().length!=0){
+            this_task.insertAfter(next_task.next());
+            var clearfix=next_task;
+            clearfix.insertBefore(this_task);
+        }
+    })
 }
 
 reinit();
