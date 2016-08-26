@@ -1,9 +1,7 @@
 <?php
 
-
 namespace app\controllers;
 
-use app\models\Users;
 use app\models\Projects;
 use app\models\Tasks;
 use Yii;
@@ -24,7 +22,6 @@ class TasksController extends \yii\web\Controller
         }
 
         return $this->render('index',['data'=>$result]);
-
     }
 
     public function getTasksOfProject($project_id){
@@ -32,15 +29,12 @@ class TasksController extends \yii\web\Controller
     }
 
     public function actionCreateproject(){
-
         $model=new Projects();
 
         $model->user_id=Yii::$app->user->getId();
         $model->name=self::DEFAULT_PROJECT_NAME;
 
-        if ($model->save()){
-            echo ($this->renderAjax('project',['project'=>$model]));
-        }
+        echo $model->save()?$this->renderAjax('project',['project'=>$model]):NULL;
     }
 
     public function actionDeleteproject(){
@@ -52,16 +46,16 @@ class TasksController extends \yii\web\Controller
     public function actionUpdateproject(){
         $id=$_GET['id'];
         $name=$_GET['value'];
+
         $project=Projects::findOne($id);
         $project->name=$name;
         return $project->save();
-
     }
 
     public function actionCreatetask(){
-
         $project_id=$_GET['id'];
         $name=$_GET['text'];
+
         $task=new Tasks();
         $task->text=$name;
         $last_order=Tasks::find()->where(['project_id'=>$project_id])->orderBy(['priority' => SORT_DESC])->one();
@@ -69,9 +63,7 @@ class TasksController extends \yii\web\Controller
         $task->done=0;
         $task->project_id=$project_id;
 
-        if ($task->save()) {
-            echo ($this->renderAjax('task',['task'=>$task]));
-        }
+        echo $task->save()?$this->renderAjax('task',['task'=>$task]):NULL;
     }
 
     public function actionDeletetask(){
@@ -104,12 +96,9 @@ class TasksController extends \yii\web\Controller
         $second_task=Tasks::findOne($second_id);
 
         $temp=$first_task->priority;
-
         $first_task->priority=$second_task->priority;
         $second_task->priority=$temp;
 
-        if ($first_task->save()&&$second_task->save()){
-            echo 'lol';
-        }
+        return ($first_task->save()&&$second_task->save());
     }
 }
