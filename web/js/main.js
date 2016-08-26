@@ -1,4 +1,3 @@
-
 function reinit(){
     $('.button-add-project').off('click');
     $('.head-buttons-div .glyphicon-trash').off('click');
@@ -12,24 +11,21 @@ function reinit(){
     $('.glyphicon-chevron-up').off('click');
     $('.glyphicon-chevron-down').off('click');
 
-    $(document).ready(function () {
-        $('.button-add-project').on('click',function () {
-            $.ajax({
-                url: "/web/index.php?r=tasks%2Fcreateproject",
-                success: function(data){
-                    $('.task-lists-div').append(data);
-                    reinit();
-                }
-            })
-        });
+    $('.button-add-project').on('click',function () {
+        $.ajax({
+            url: "/web/index.php?r=tasks%2Fcreateproject",
+            success: function(data){
+                $('.task-lists-div').append(data);
+                reinit();
+            }
+        })
     });
+
     $('.head-buttons-div .glyphicon-trash').on('click',function(){
         var id=$(this).parents('.project').attr('id');
-        var data='id='+id;
         $.ajax({
             url: "/web/index.php?r=tasks%2Fdeleteproject",
-            type:"GET",
-            data:data,
+            data:'id='+id,
             success: function(data){
                 data=='deleted'?$('.project#'+id).remove():false;
             }
@@ -37,9 +33,7 @@ function reinit(){
     });
 
     $('.head-buttons-div .glyphicon-pencil').on('click',function(){
-        var parent=$(this).parents('.project');
-        var Input=parent.find('.project-name');
-        Input.prop('disabled',false).focus();
+      $(this).parents('.project').find('.project-name').prop('disabled',false).focus();
     });
 
     $('.project-name').on('focus',function() {
@@ -47,14 +41,14 @@ function reinit(){
     });
 
     $('.project-name').on('blur',function(){
-        var currentVal=($(this).val());;
+        var currentVal=$(this).val();
         if (currentVal==''){
             $(this).val(this.old_value);
         }else {
             var id = $(this).parents('.project').attr('id');
             $.ajax({
                 url: "/web/index.php?r=tasks%2Fupdateproject",
-                data: 'id=' + id + '&value=' + currentVal,
+                data: 'id=' + id + '&value=' + currentVal
             })
         }
     });
@@ -81,13 +75,10 @@ function reinit(){
 
     $('.task-updating .glyphicon-trash').on('click',function(){
         var row=$(this).parents('.task-row');
-        var not_normal_id=$(this).parents('.task-row').attr('id');
-        var normal_id=not_normal_id.substring(4);
+        var normal_id=$(this).parents('.task-row').attr('id').substring(4);
         var data='id='+normal_id;
-        console.log(data);
         $.ajax({
             url: "/web/index.php?r=tasks%2Fdeletetask",
-            type:"GET",
             data:data,
             success: function(data){
                 data=='deleted'?row.remove():false;
@@ -95,9 +86,7 @@ function reinit(){
         });
     });
     $('.task-updating .glyphicon-pencil').on('click',function(){
-        var parent=$(this).parents('.task-row');
-        var Input=parent.find('.input-name-task');
-        Input.prop('disabled',false).focus();
+        $(this).parents('.task-row').find('.input-name-task').prop('disabled',false).focus();
     });
 
     $('.input-name-task').on('focus',function() {
@@ -105,12 +94,11 @@ function reinit(){
     });
 
     $('.input-name-task').on('blur',function(){
-        var currentVal=($(this).val());;
+        var currentVal=($(this).val());
         if (currentVal==''){
             $(this).val(this.old_value);
         }else {
-            var not_normal_id=$(this).parents('.task-row').attr('id');
-            var normal_id=not_normal_id.substring(4);
+            var normal_id=$(this).parents('.task-row').attr('id').substring(4);
             $.ajax({
                 url: "/web/index.php?r=tasks%2Fupdatetask",
                 data: 'id=' + normal_id + '&value=' + currentVal,
@@ -121,12 +109,11 @@ function reinit(){
         var parent=$(this).parents('.task-row');
         var Input=parent.find('.input-name-task');
         var checked=$(this).prop('checked');
-        var not_normal_id=$(this).parents('.task-row').attr('id');
-        var normal_id=not_normal_id.substring(4);
+        var normal_id=$(this).parents('.task-row').attr('id').substring(4);
         $.ajax({
             url: "/web/index.php?r=tasks%2Fupdatestatus",
             data: 'checked='+checked+'&id=' + normal_id,
-            success:function(data){
+            success:function(){
                 if (checked) {
                     Input.addClass('task-text-completed');
                     parent.addClass('task-completed');
@@ -139,14 +126,11 @@ function reinit(){
     });
     $('.task-row').hover(
         function() {
-            var task=$(this).find('.task-updating');
-            task.removeClass('none-display');
+            $(this).find('.task-updating').removeClass('none-display');
         },function() {
-            var task=$(this).find('.task-updating');
-            task.addClass('none-display');
+            $(this).find('.task-updating').addClass('none-display');
         }
     );
-
     $('.glyphicon-chevron-up').on('click',function(){
         var this_task=$(this).parents('.task-row');
         var prev_task=this_task.prev();
@@ -155,8 +139,7 @@ function reinit(){
             var order2=prev_task.prev().attr('id').substring(4);
             if (changeOrder(order1,order2)) {
                 this_task.insertBefore(prev_task.prev());
-                var clearfix = prev_task;
-                clearfix.insertAfter(this_task);
+                prev_task.insertAfter(this_task);
             }
         }
     });
@@ -169,23 +152,17 @@ function reinit(){
             var order2=next_task.next().attr('id').substring(4);
             if (changeOrder(order1,order2)){
                 this_task.insertAfter(next_task.next());
-                var clearfix=next_task;
-                clearfix.insertBefore(this_task);
+                next_task.insertBefore(this_task);
             }
         }
     })
 }
 
 function changeOrder(id1,id2) {
-     if ($.ajax({
+     return $.ajax({
         url: "/web/index.php?r=tasks%2Fchangeorder",
-        data: 'id1=' + id1 + '&id2=' + id2,
-        success: function () {
-            return true;
-        }
-        })){
-         return true;
-     }
+        data: 'id1=' + id1 + '&id2=' + id2
+        })
 }
 
 reinit();
