@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 
 class RegForm extends Model{
@@ -35,14 +34,14 @@ class RegForm extends Model{
         $user->email=$this->email;
         $user->generateAuthKey();
         $user->setPassword($this->password);
-        if ($this->checkConfirmation()){
-            return $user->save()?$user:NULL;
+        if ($this->checkConfirmation()) {
+            return $user->save() ? $user : NULL;
+        }else{
+            return false;
         }
     }
 
     public function checkConfirmation(){
-
         return $this->password==$this->confirmPassword;
-
     }
 }
