@@ -151,9 +151,13 @@ function reinit(){
         var this_task=$(this).parents('.task-row');
         var prev_task=this_task.prev();
         if (prev_task.length!=0){
-            this_task.insertBefore(prev_task.prev());
-            var clearfix=prev_task;
-            clearfix.insertAfter(this_task)
+            var order1=this_task.attr('id').substring(4);
+            var order2=prev_task.prev().attr('id').substring(4);
+            if (changeOrder(order1,order2)) {
+                this_task.insertBefore(prev_task.prev());
+                var clearfix = prev_task;
+                clearfix.insertAfter(this_task);
+            }
         }
     });
 
@@ -161,11 +165,27 @@ function reinit(){
         var this_task=$(this).parents('.task-row');
         var next_task=this_task.next();
         if (next_task.next().length!=0){
-            this_task.insertAfter(next_task.next());
-            var clearfix=next_task;
-            clearfix.insertBefore(this_task);
+            var order1=this_task.attr('id').substring(4);
+            var order2=next_task.next().attr('id').substring(4);
+            if (changeOrder(order1,order2)){
+                this_task.insertAfter(next_task.next());
+                var clearfix=next_task;
+                clearfix.insertBefore(this_task);
+            }
         }
     })
+}
+
+function changeOrder(id1,id2) {
+     if ($.ajax({
+        url: "/web/index.php?r=tasks%2Fchangeorder",
+        data: 'id1=' + id1 + '&id2=' + id2,
+        success: function () {
+            return true;
+        }
+        })){
+         return true;
+     }
 }
 
 reinit();

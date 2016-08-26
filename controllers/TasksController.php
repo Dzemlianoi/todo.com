@@ -95,4 +95,21 @@ class TasksController extends \yii\web\Controller
         $task->done=$checked=='true'?1:0;
         return $task->save();
     }
+
+    public function actionChangeorder(){
+        $first_id=$_GET['id1'];
+        $second_id=$_GET['id2'];
+
+        $first_task=Tasks::findOne($first_id);
+        $second_task=Tasks::findOne($second_id);
+
+        $temp=$first_task->priority;
+
+        $first_task->priority=$second_task->priority;
+        $second_task->priority=$temp;
+
+        if ($first_task->save()&&$second_task->save()){
+            echo 'lol';
+        }
+    }
 }
