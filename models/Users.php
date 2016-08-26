@@ -117,6 +117,7 @@ class Users extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
+
     public function getProjects()
     {
         return $this->hasMany(Projects::className(), ['user_id' => 'id']);
