@@ -73,13 +73,6 @@ $this->beginPage();
 
 
 </div>
-<footer class="footer">
-    <div class="container">
-        <span class="badge">
-            <span class="glyphicon glyphicon-copyright-mark"></span>Dzemlianoi<?=date('Y-M')?>
-        </span>
-    </div>
-</footer>
 
 <?=$this->endBody()?>
 </body>
