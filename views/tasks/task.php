@@ -12,6 +12,7 @@
     <div class="text-task">
         <input type="text" maxlength="40" class="<?=$class_input?> input-name-task" disabled value="<?=$task['text']?>"/>
     </div>
+    <div class="task-deadline">--.--.----</div>
     <div class="task-updating none-display">
         <div class="task-order-change">
             <span class="glyphicon glyphicon-chevron-up"></span>

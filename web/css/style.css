@@ -213,19 +213,31 @@ div.status-red{
 .task-row:last-child{
     border-bottom:none;
 }
+.task-row:first-child{
+    border-top:1px solid black;
+}
 .task-row:hover{
     background-color: #fcfed5;
     cursor: pointer;
 }
+.task-header{
+    background-color:whitesmoke;
+    color:black;
+    line-height:45px;
+    min-height: 45px;
+    border-bottom:1px solid grey;
+    font-family:Candara;
+    font-size:15px;
+}
 .done-task,.text-task,.task-updating,.task-order-change{
     display:inline-block;
+
 }
 .done-task{
     float:left;
     width:10%;
     text-align: center;
-    border-right:1px solid lightcoral;
-    margin-right:15px;
+    border-right:1px solid lightgrey;
 }
 .task-text-completed{
     text-decoration: line-through;
@@ -243,8 +255,7 @@ div.status-red{
     text-align:left;
     padding-left:20px;
     float:left;
-    width: 60%;
-    border-left:1px solid lightcoral;
+    width: 50%;
     border-right:1px solid lightgrey;
 }
 .input-name-task{
@@ -257,9 +268,15 @@ div.status-red{
     border:none;
     outline: none;
 }
+.task-deadline{
+    float:left;
+    display:inline-block;
+    border-right:1px solid lightgrey;
+    min-width:90px;
+}
 .task-updating{
     float:left;
-    width: 27%;
+    width: 25%;
     height:45px;
     text-align:center;
     vertical-align: middle;

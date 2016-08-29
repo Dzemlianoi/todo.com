@@ -3,7 +3,7 @@
     <span class="simple-complany-name">Ruby Garage</span>
     <span class="simple-try"></span>
 
-    <button class="btn btn-default">Sign in</button>
-    <button class="btn btn-success">Registry</button>
+    <a href="/web/index.php?r=auth%2Fsignin"><button class="btn btn-default">Sign in</button></a>
+    <a href="/web/index.php?r=auth%2Fregistration"><button class="btn btn-success">Registry</button></a>
 
 </div>

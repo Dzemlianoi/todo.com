@@ -33,7 +33,7 @@ $this->beginPage();
         ];
     $menuItems[]= [
             'label' => 'Home <span class="glyphicon glyphicon-home"></span>',
-            'url' => ['/tasks/delete']
+            'url' => ['/']
         ];
 
     if (Yii::$app->user->isGuest){
