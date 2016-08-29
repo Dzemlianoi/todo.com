@@ -272,15 +272,21 @@ div.status-red{
     float:left;
     display:inline-block;
     border-right:1px solid lightgrey;
-    min-width:90px;
+    min-width:130px;
     text-align: center;
 }
 .task-deadline input{
-
+    width:120px;
+    height:30px;
+    background: white;
+    border:none;
+    color:black;
+    font-size:11px;
+    text-align:center;
 }
 .task-updating{
     float:left;
-    width: 25%;
+    width: 20%;
     height:45px;
     text-align:center;
     vertical-align: middle;

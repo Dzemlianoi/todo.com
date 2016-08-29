@@ -55,6 +55,7 @@ class TasksController extends \yii\web\Controller
     public function actionCreatetask(){
         $project_id=$_GET['id'];
         $name=$_GET['text'];
+        $date=date('d.m.y');
 
         $task=new Tasks();
         $task->text=$name;
@@ -62,6 +63,7 @@ class TasksController extends \yii\web\Controller
         $task->priority=is_int($last_order['priority'])?$last_order['priority']+1:1;
         $task->done=0;
         $task->project_id=$project_id;
+        $task->deadline=Yii::$app->formatter->asDate('now', 'yyyy-MM-dd');
 
         echo $task->save()?$this->renderAjax('task',['task'=>$task]):NULL;
     }
