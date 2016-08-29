@@ -55,16 +55,21 @@ function reinit(){
 
     $('.task-add-btn').on('click',function(){
         var parent=$(this).parents('.project');
-        var Input=parent.find('.head-add-bar input')
+        var Input=parent.find('.head-add-bar input');
         var value=Input.val();
         var id=parent.attr('id');
+        var header=parent.find('.task-header');
+        var clear=header.next();
         $.ajax({
             url: "/web/index.php?r=tasks%2Fcreatetask",
             data: 'id=' + id + '&text=' + value,
             success: function (data) {
                 var project=$('#'+id+' .tasks-of-project');
-                if (!project.find('.tasks-row')){
-                    project.empty().removeClass('empty-project');
+                if (project.find('.task-row').length==0){
+                    console.log(1);
+                    project.removeClass('empty-project');
+                    header.removeClass('none-display');
+                    clear.removeClass('none-display');
                 }
                 project.append(data);
                 Input.val('');
@@ -74,14 +79,27 @@ function reinit(){
     });
 
     $('.task-updating .glyphicon-trash').on('click',function(){
+        var parent=$(this).parents('.project');
+        var id=parent.attr('id');
+
         var row=$(this).parents('.task-row');
         var normal_id=$(this).parents('.task-row').attr('id').substring(4);
         var data='id='+normal_id;
+
+        var header=parent.find('.task-header');
+        var clear=header.next();
         $.ajax({
             url: "/web/index.php?r=tasks%2Fdeletetask",
             data:data,
             success: function(data){
-                data=='deleted'?row.remove():false;
+                if (data=='deleted'){
+                    if (parent.find('.task-row').length==1){
+                        parent.find('tasks-of-project').addClass('empty-project');
+                        header.addClass('none-display');
+                        clear.addClass('none-display');
+                    }
+                    row.remove();
+                }
             }
         });
     });
