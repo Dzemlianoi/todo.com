@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 /**
  * This is the model class for table "tasks".
  *
@@ -10,6 +12,7 @@ namespace app\models;
  * @property integer $priority
  * @property integer $done
  * @property integer $project_id
+ * @property string $deadline
  *
  * @property Projects $project
  */
@@ -29,8 +32,9 @@ class Tasks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text', 'priority'], 'required'],
+            [['priority'], 'required'],
             [['priority', 'done', 'project_id'], 'integer'],
+            [['deadline'], 'safe'],
             [['text'], 'string', 'max' => 40],
             [['project_id'], 'exist', 'skipOnError' => true, 'targetClass' => Projects::className(), 'targetAttribute' => ['project_id' => 'id']],
         ];
@@ -47,6 +51,7 @@ class Tasks extends \yii\db\ActiveRecord
             'priority' => 'Priority',
             'done' => 'Done',
             'project_id' => 'Project ID',
+            'deadline' => 'Deadline',
         ];
     }
 
