@@ -11,7 +11,8 @@ class m160803_093041_create_task extends Migration
             'text'=>$this->string(40),
             'priority'=>$this->smallInteger()->notNull(),
             'done'=>$this->boolean(),
-            'project_id'=>$this->integer()
+            'project_id'=>$this->integer(),
+            'deadline'=>$this->date(),
         ]);
 
     }
