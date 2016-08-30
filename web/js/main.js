@@ -149,10 +149,22 @@ function reinit(){
             $(this).find('.task-updating').addClass('none-display');
         }
     );
+
+    $('.task-deadline input').on('change',function(){
+
+        var currentVal=$(this).val();
+        var normal_id=$(this).parents('.task-row').attr('id').substring(4);
+        console.log(currentVal);
+        $.ajax({
+            url: "/web/index.php?r=tasks%2Fupdatedeadline",
+            data: 'id=' + normal_id + '&value=' + currentVal,
+        })
+    });
+
     $('.glyphicon-chevron-up').on('click',function(){
         var this_task=$(this).parents('.task-row');
         var prev_task=this_task.prev();
-        if (prev_task.length!=0){
+        if (!prev_task.prev().hasClass('task-header')){
             var order1=this_task.attr('id').substring(4);
             var order2=prev_task.prev().attr('id').substring(4);
             if (changeOrder(order1,order2)) {

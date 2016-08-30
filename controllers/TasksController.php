@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Projects;
 use app\models\Tasks;
+use Faker\Provider\DateTime;
 use Yii;
 
 class TasksController extends \yii\web\Controller
@@ -88,6 +89,16 @@ class TasksController extends \yii\web\Controller
         $task=Tasks::findOne($id);
         $task->done=$checked=='true'?1:0;
         return $task->save();
+    }
+    public function actionUpdatedeadline(){
+        $id=$_GET['id'];
+        $date=$_GET['value'];
+
+
+        $task=Tasks::findOne($id);
+        $task->deadline=$date;
+        return $task->save();
+
     }
 
     public function actionChangeorder(){

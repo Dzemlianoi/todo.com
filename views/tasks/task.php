@@ -22,7 +22,7 @@ use yii\jui\DatePicker;
             'attribute' => 'from_date',
             'language' => 'en',
             'value'=>$deadline,
-            //'dateFormat' => 'yyyy -MM-dd',
+            'dateFormat' => 'yyyy-MM-dd',
         ]); ?>
     </div>
     <div class="task-updating none-display">
