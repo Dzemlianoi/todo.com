@@ -33,7 +33,9 @@ function reinit(){
     });
 
     $('.head-buttons-div .glyphicon-pencil').on('click',function(){
-      $(this).parents('.project').find('.project-name').prop('disabled',false).focus();
+      var input=$(this).parents('.project').find('.project-name');
+      var value=input.val();
+      input.val('').val(value).prop('disabled',false).focus();
     });
 
     $('.project-name').on('focus',function() {
@@ -104,7 +106,9 @@ function reinit(){
         });
     });
     $('.task-updating .glyphicon-pencil').on('click',function(){
-        $(this).parents('.task-row').find('.input-name-task').prop('disabled',false).focus();
+        var input=$(this).parents('.task-row').find('.input-name-task');
+        var value=input.val();
+        input.val('').val(value).prop('disabled',false).focus();
     });
 
     $('.input-name-task').on('focus',function() {
