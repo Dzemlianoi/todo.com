@@ -3,13 +3,17 @@ function reinit(){
     $('.head-buttons-div .glyphicon-trash').off('click');
     $('.head-buttons-div .glyphicon-pencil').off('click');
     $('.project-name').off('blur');
+    $('.project-name').off('focus');
     $('.task-add-btn').off('click');
     $('.task-updating .glyphicon-trash').off('click');
     $('.task-updating .glyphicon-pencil').off('click');
     $('.input-name-task').off('blur');
+    $('.input-name-task').off('focus');
+    $('.done-task input').off('click');
     $('.task-row').off('hover');
     $('.glyphicon-chevron-up').off('click');
     $('.glyphicon-chevron-down').off('click');
+    $('.task-deadline input').off('change');
 
     $('.button-add-project').on('click',function () {
         $.ajax({
@@ -68,7 +72,6 @@ function reinit(){
             success: function (data) {
                 var project=$('#'+id+' .tasks-of-project');
                 if (project.find('.task-row').length==0){
-                    console.log(1);
                     project.removeClass('empty-project');
                     header.removeClass('none-display');
                     clear.removeClass('none-display');
@@ -100,6 +103,7 @@ function reinit(){
                         header.addClass('none-display');
                         clear.addClass('none-display');
                     }
+                    row.next().remove();
                     row.remove();
                 }
             }
@@ -158,10 +162,9 @@ function reinit(){
 
         var currentVal=$(this).val();
         var normal_id=$(this).parents('.task-row').attr('id').substring(4);
-        console.log(currentVal);
         $.ajax({
             url: "/web/index.php?r=tasks%2Fupdatedeadline",
-            data: 'id=' + normal_id + '&value=' + currentVal,
+            data: 'id=' + normal_id + '&value=' + currentVal
         })
     });
 

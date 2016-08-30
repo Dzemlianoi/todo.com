@@ -1,8 +1,4 @@
 <?php
-use yii\jui\DatePicker;
-?>
-
-<?php
     if ($task['done']==1){
         $checked='checked';
         $class_row='task-completed';
@@ -18,12 +14,7 @@ use yii\jui\DatePicker;
         <input type="text" maxlength="40" class="<?=$class_input?> input-name-task" disabled value="<?=$task['text']?>"/>
     </div>
     <div class="task-deadline">
-        <?= DatePicker::widget([
-            'attribute' => 'from_date',
-            'language' => 'en',
-            'value'=>$deadline,
-            'dateFormat' => 'yyyy-MM-dd',
-        ]); ?>
+        <input type="date" value="<?=$deadline?>" min="<?=Yii::$app->formatter->asDate('now', 'yyyy-MM-dd')?>"/>
     </div>
     <div class="task-updating none-display">
         <div class="task-order-change">

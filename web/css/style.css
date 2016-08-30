@@ -307,3 +307,4 @@ div.status-red{
     margin-bottom:15px;
     display: inline-block;
 }
+::-webkit-inner-spin-button { display: none; }
