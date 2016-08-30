@@ -26,11 +26,7 @@ $this->beginPage();
             'options' => ['class'=>'custom-navbar']
         ]
     );
-    $menuItems[]=
-        [
-            'label' => 'About <span class="glyphicon glyphicon-question-sign"></span>',
-            'url' => ['/auth/about']
-        ];
+
     $menuItems[]= [
             'label' => 'Home <span class="glyphicon glyphicon-home"></span>',
             'url' => ['/']
